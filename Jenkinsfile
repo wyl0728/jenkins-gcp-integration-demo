@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = '<<Your GCP Project ID>>'
-        CLUSTER_NAME = '<<Your GKE Cluster Name>>'
-        LOCATION = '<<Your GKE Cluster Location>>'
-        CREDENTIALS_ID = 'multi-k8s'
+        PROJECT_ID = 'sg-rd-ce-yilin-wang'
+        CLUSTER_NAME = 'helloworld'
+        LOCATION = 'asia-southeast1-b'
+        CREDENTIALS_ID = 'sg-rd-ce-yilin-wang'
     }
     stages {
         stage("Checkout code") {
@@ -15,7 +15,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("<<Your DockerHub username>>/hello:${env.BUILD_ID}")
+                    myapp = docker.build("wyl0728/hello:${env.BUILD_ID}")
                 }
             }
         }
